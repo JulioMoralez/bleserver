@@ -10,6 +10,7 @@
 
     <properties>
         <java.version>1.8</java.version>
+        <sql.version>42.2.16</sql.version>
     </properties>
 
     <parent>
@@ -32,6 +33,16 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>${sql.version}</version>
+        </dependency>
+
 
 
     </dependencies>

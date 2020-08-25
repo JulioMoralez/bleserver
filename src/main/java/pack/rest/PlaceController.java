@@ -1,42 +1,38 @@
 package pack.rest;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
-import pack.model.User;
-import pack.service.UserService;
+import pack.model.Place;
+import pack.service.PlaceService;
 
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 @CrossOrigin
 @RestController
-@RequestMapping("/api/user")
-public class UserController {
+@RequestMapping("/api/place")
+public class PlaceController {
 
     @Autowired
-    private UserService userService;
+    private PlaceService placeService;
 
     @RequestMapping(method = RequestMethod.GET, produces = "application/json")
-    public List<User> findAll() {
-        return userService.findAll();
+    public List<Place> findAll() {
+        return placeService.findAll();
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET, produces = "application/json")
-    public User getById(@PathVariable Long id) {
-        System.out.println(id);
-        return userService.findById(id);
+    public Place getById(@PathVariable Long id) {
+        return placeService.findById(id);
     }
 
     @RequestMapping(method = RequestMethod.POST, consumes = "application/json")
-    public User create(@RequestBody User user) {
-        userService.save(user);
-        return user;
+    public Place create(@RequestBody Place place) {
+        placeService.save(place);
+        return place;
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE, produces = "application/json")
     public void deleteById(@PathVariable Long id) {
-        userService.deleteById(id);
+        placeService.deleteById(id);
     }
 }
