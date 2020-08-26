@@ -27,8 +27,7 @@ public class PlaceController {
 
     @RequestMapping(method = RequestMethod.POST, consumes = "application/json")
     public Place create(@RequestBody Place place) {
-        placeService.save(place);
-        return place;
+        return placeService.save(place);
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE, produces = "application/json")

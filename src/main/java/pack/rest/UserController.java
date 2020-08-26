@@ -25,14 +25,12 @@ public class UserController {
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET, produces = "application/json")
     public User getById(@PathVariable Long id) {
-        System.out.println(id);
         return userService.findById(id);
     }
 
     @RequestMapping(method = RequestMethod.POST, consumes = "application/json")
     public User create(@RequestBody User user) {
-        userService.save(user);
-        return user;
+        return userService.save(user);
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE, produces = "application/json")
