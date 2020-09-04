@@ -16,10 +16,18 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     @Autowired
     private UserRepo userRepo;
 
+    private User authUser;
+
+    public User getAuthUser() {
+        return authUser;
+    }
+
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = userRepo.findByUsername(username).stream().findFirst().orElse(null);
+        System.out.println(user);
         if (user != null){
+            authUser = user;
             return SecurityUser.fromUser(user);
         }
         return null;

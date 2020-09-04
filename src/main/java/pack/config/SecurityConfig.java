@@ -35,11 +35,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/").permitAll()
                 .antMatchers(HttpMethod.GET, "/api/user/**").permitAll()
                 .antMatchers(HttpMethod.POST, "/api/user/**").permitAll()
-                .antMatchers(HttpMethod.DELETE, "/api/user/**").hasAnyAuthority("ADMIN")
+                .antMatchers(HttpMethod.DELETE, "/api/user/**").permitAll()
                 .anyRequest()
-                .authenticated()
-                .and()
-                .httpBasic();
+//                .authenticated()
+                .permitAll();
+//                .and()
+//                .httpBasic();
     }
 
 

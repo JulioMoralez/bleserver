@@ -3,18 +3,12 @@ package pack.model;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
-import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
-import java.util.stream.Collector;
-import java.util.stream.Collectors;
 
 @Entity
-@Table(name = "t_place")
-public class Place {
+@Table(name = "t_device")
+public class Device {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,13 +18,14 @@ public class Place {
     private boolean disabled;
 
 //    @JsonIgnore
-//    @OneToMany(mappedBy = "place", fetch = FetchType.LAZY)
-//    private List<Beacon> beacons;
+////    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
+//    @OneToOne(mappedBy = "device", fetch = FetchType.LAZY)
+//    private Beacon beacon;
 //
 //    @Transient
-//    private List<Long> idBeacons;
+//    private Long idBeacon;
 
-    public Place() {
+    public Device() {
     }
 
     public Long getId() {
@@ -57,20 +52,19 @@ public class Place {
         this.disabled = disabled;
     }
 
-//    public List<Beacon> getBeacons() {
-//        return beacons;
+//    public Beacon getBeacon() {
+//        return beacon;
 //    }
 //
-//    public void setBeacons(List<Beacon> beacons) {
-//        this.beacons = beacons;
+//    public void setBeacon(Beacon beacon) {
+//        this.beacon = beacon;
 //    }
 //
-//    public List<Long> getIdBeacons() {
-//        return beacons.stream().map(Beacon::getId).collect(Collectors.toList());
+//    public Long getIdBeacon() {
+//        return beacon!=null ? beacon.getId() : null;
 //    }
 //
-//    public void setIdBeacons(List<Long> idBeacons) {
-//        this.idBeacons = idBeacons;
+//    public void setIdBeacon(Long idBeacon) {
+//        this.idBeacon = idBeacon;
 //    }
-
 }
